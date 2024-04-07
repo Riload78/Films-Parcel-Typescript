@@ -1,2 +1,9 @@
 @use 'reset';
 @import "~bootstrap/scss/bootstrap";
+
+
+#list-wrapper {
+    .col{
+        min-height: 500px;
+    }
+}

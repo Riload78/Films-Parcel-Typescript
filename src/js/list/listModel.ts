@@ -12,13 +12,12 @@ const options: object = {
 }
 
 
-export const getLastFilms = async () : Promise<any> => {
+export const getLastFilms = async (page?: number) : Promise<any> => {
     try {
-        const url = `${apiUrl}movie/now_playing?language=es_ES&page=1`
+        const url = `${apiUrl}movie/now_playing?language=es_ES&page=${page}`
         const response = await fetch(url, options)
         const data = await response.json()
         console.log(data);
-        
         const genresData = await getGenres()
         const films = await getParseData(data, genresData) 
         return films   
