@@ -17,8 +17,10 @@ export const getLastFilms = async () : Promise<any> => {
         const url = `${apiUrl}movie/now_playing?language=es_ES&page=1`
         const response = await fetch(url, options)
         const data = await response.json()
-        const films = getParseData(data)
         console.log(data);
+        
+        const genresData = await getGenres()
+        const films = await getParseData(data, genresData) 
         return films   
 
     } catch (error) {
@@ -40,15 +42,14 @@ const getGenres = async () : Promise<any> => {
     }
 }
 
-const getGenreNamesByIds = async (genreIds:number[]) => {
-    const genresData = await getGenres()
+const getGenreNamesByIds = async (genreIds: number[], genresData:object) => {
     return genreIds.map(id => {
         const genre = genresData.genres.find(genre => genre.id === id);
         return genre ? genre.name : 'Género desconocido';
     });
 }
 
-const getParseData = async (data: object) =>  {
+const getParseData = async (data: object, genresData: object) =>  {
     let films =  [] as Film[]
     for (const element of data.results) {
         let film : Film =  {
@@ -56,7 +57,7 @@ const getParseData = async (data: object) =>  {
             title: element.title,
             overview: element.overview,
             release_date: new Date(element.release_date),
-            genre: await getGenreNamesByIds(element.genre_ids),
+            genre: await getGenreNamesByIds(element.genre_ids, genresData),
             image: element.poster_path !== null ? `${apiUrlImage}${element.poster_path}` : "No hay imagen",
         }
         films.push(film)        

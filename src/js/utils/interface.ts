@@ -8,7 +8,7 @@ export interface Film {
     title: string,
     overview: string,
     release_date: Date | null,
-    genre: number[],    
+    genre: [] | string[],    
     image: string 
 
 }
