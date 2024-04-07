@@ -1,0 +1,5 @@
+.history/
+.parcel-cache
+.vscode/
+.env.development
+node_modules/
