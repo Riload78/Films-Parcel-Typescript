@@ -2,13 +2,13 @@
   "name": "spoty-parcel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rimraf .parcel-cache && parcel --lazy --no-cache",
-    "build": "rimraf dist && parcel build"
+    "build": "rimraf .parcel-cache dist && parcel build --public-url '/Films-Parcel-Typescript/' src/index.html",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -33,5 +33,12 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5"
+  },
+  "parcel": {
+    "transformers": {
+      "*.scss": [
+        "@parcel/transformer-sass"
+      ]
+    }
   }
 }

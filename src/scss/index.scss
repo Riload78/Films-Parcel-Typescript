@@ -1,5 +1,5 @@
 @use 'reset';
-@import "~bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 header {
     background-image: url('../images/banner.jpg?as=webp&width=1900');
