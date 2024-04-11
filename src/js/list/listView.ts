@@ -17,8 +17,6 @@ export const buildListFilms = (film: Film, listWrapper:HTMLElement): HTMLElement
                 <p class="card-text">
                     ${film.overview}
                 </p>
-
-                <button type="button" class="btn btn-primary">Button</button>
             </div>
             <div class="card-footer">
                 ${renderGenrers(film.genre)}

@@ -22,12 +22,16 @@ export const listController = async(listWrapper: HTMLElement) :Promise<void> => 
             cardFilmElement.classList.add('col')
             const cardFilm = buildListFilms(film, cardFilmElement);
             listWrapper.appendChild(cardFilm);
-        }        
+        } 
+        const filmsInPage = listWrapper.querySelectorAll('.col') as NodeListOf<HTMLDivElement>;
+        const lastFilmInPage = filmsInPage[filmsInPage.length - 1]
         
+
     }
 
     const handlerLoadPage = () :void => {
         let pages:number = 1
+        
         const observerLoadPage = new IntersectionObserver(async (entries) => {
             console.log(entries)
             if(!entries[0].isIntersecting){return}
@@ -35,18 +39,25 @@ export const listController = async(listWrapper: HTMLElement) :Promise<void> => 
             console.log('Ejecuto una accion cuando el elemento esta visible' + entries[0].target);
             const films = await loadFilms(pages)
             handlerListBuild(films)
+            
             lastItem(observerLoadPage)
         })
 
         lastItem(observerLoadPage)
+        
     }
 
     const lastItem = (observerLoadPage) :void => {
+        if (observerLoadPage) {
+            observerLoadPage.disconnect(); // Desconectar el observador anterior antes de crear uno nuevo
+        }
         const filmsInPage = listWrapper.querySelectorAll('.col') as NodeListOf<HTMLDivElement>;
         console.log(filmsInPage);
         const lastFilmInPage = filmsInPage[filmsInPage.length - 1]
+        
         console.log(lastFilmInPage)
         observerLoadPage.observe(lastFilmInPage) 
+       
     }
 
     const films = await loadFilms()

@@ -1,9 +1,29 @@
 @use 'reset';
 @import "~bootstrap/scss/bootstrap";
 
+header {
+    background-image: url('../images/banner.jpg?as=webp&width=1900');
+    background-size: cover;
+    background-position: top;
+    min-height: 40vh;
+    margin-bottom: 5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 4rem;
+    }
+
+}
 
 #list-wrapper {
     .col{
         min-height: 500px;
     }
+}
+
+.card-text{
+    height: 120px;
+    text-overflow: ellipsis "[..]";
+    overflow: hidden;
 }
