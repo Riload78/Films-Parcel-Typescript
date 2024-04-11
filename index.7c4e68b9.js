@@ -17,4 +17,4 @@ const e=void 0,t=void 0,a={method:"GET",headers:{accept:"application/json",Autho
             </div>
         </div>
     `,t),s=async e=>{let t=async e=>{void 0===e&&(e=1);let t=await o(e);return console.log(t),t},a=t=>{for(let a of(document.createElement("div").classList.add("container"),t)){let t=document.createElement("div");t.classList.add("col");let o=i(a,t);e.appendChild(o)}let a=e.querySelectorAll(".col");a[a.length-1]},l=t=>{t&&t.disconnect();let a=e.querySelectorAll(".col");console.log(a);let o=a[a.length-1];console.log(o),t.observe(o)};a(await t()),(()=>{let e=1,o=new IntersectionObserver(async r=>{console.log(r),r[0].isIntersecting&&(e+=1,console.log("Ejecuto una accion cuando el elemento esta visible"+r[0].target),a(await t(e)),l(o))});l(o)})()},c={type:"error",message:'Element with ID "list-wrapper" not found.'};document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("list-wrapper");if(!e)throw c;s(e)});
-//# sourceMappingURL=index.15b8e587.js.map
+//# sourceMappingURL=index.7c4e68b9.js.map

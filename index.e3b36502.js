@@ -17,4 +17,4 @@
             </div>
         </div>
     `,t),s=async e=>{let t=async e=>{void 0===e&&(e=1);let t=await l(e);return console.log(t),t},a=t=>{for(let a of(document.createElement("div").classList.add("container"),t)){let t=document.createElement("div");t.classList.add("col");let l=i(a,t);e.appendChild(l)}let a=e.querySelectorAll(".col");a[a.length-1]},o=t=>{t&&t.disconnect();let a=e.querySelectorAll(".col");console.log(a);let l=a[a.length-1];console.log(l),t.observe(l)};a(await t()),(()=>{let e=1,l=new IntersectionObserver(async n=>{console.log(n),n[0].isIntersecting&&(e+=1,console.log("Ejecuto una accion cuando el elemento esta visible"+n[0].target),a(await t(e)),o(l))});o(l)})()},c={type:"error",message:'Element with ID "list-wrapper" not found.'};document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementById("list-wrapper");if(!e)throw c;s(e)})}();
-//# sourceMappingURL=index.537324ce.js.map
+//# sourceMappingURL=index.e3b36502.js.map
