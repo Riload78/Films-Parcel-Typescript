@@ -44,7 +44,7 @@ const getGenres = async () : Promise<any> => {
 const getGenreNamesByIds = async (genreIds: number[], genresData:object) => {
     return genreIds.map(id => {
         const genre = genresData.genres.find(genre => genre.id === id);
-        return genre ? genre.name : 'Género desconocido';
+        return genre ? genre.name : 'Género desconocido'; 
     });
 }
 
