@@ -1,0 +1,35 @@
+name: Deploy Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Asegúrate de usar la versión de Node.js que necesitas
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+      env:
+        API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+        API_BASE_IMAGE_URL: ${{ secrets.API_BASE_IMAGE_URL }} 
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages  # El nombre de la rama a la cual desplegar (cambia si necesitas otra rama)
+        folder: dist  # El directorio que contiene los archivos a desplegar
+        token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automáticamente crea este secreto para usar en Actions
